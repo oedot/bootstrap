@@ -1,5 +1,6 @@
 //
 
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 
@@ -36,10 +37,16 @@ int main() {
     // make the window's context current
     glfwMakeContextCurrent(wnd);
 
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        // failed to initialize the OpenGL Context
+        return 1;
+    }
+
     // loop until the user closes the window
     while (!glfwWindowShouldClose(wnd)) {
 
-
+        glClearColor(0.875, 0.875, 0.875, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT);
 
         // swap front and back buffers
         glfwSwapBuffers(wnd);
